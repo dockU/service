@@ -1,6 +1,11 @@
 FROM dock0/service
 MAINTAINER Jon Chen <bsd@voltaire.sh>
 
+ENV ETCD_NODE etcd-master.a.serv.pw
+ENV ETCD_CA_KEY /etc/ssl/certs/etcd-ca.a.serv.pw.ca
+ENV ETCD_CERT /etc/ssl/certs/etcd-localhost.crt
+ENV ETCD_KEY /et/cssl/private/etcd-localhost.key
+
 RUN pacman -Syyu --needed --noconfirm
 
 RUN mkdir -p /etc/confd/{conf.d,templates}
