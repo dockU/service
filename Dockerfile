@@ -8,8 +8,6 @@ ENV ETCD_CA_KEY /opt/service/ssl/certs/etcd-ca.a.serv.pw.ca
 ENV ETCD_CERT /opt/service/ssl/certs/etcd-localhost.crt
 ENV ETCD_KEY /opt/service/ssl/private/etcd-localhost.key
 
-RUN pacman -Syyu --needed --noconfirm
-
 RUN mkdir -p /etc/confd/{conf.d,templates}
 ADD https://github.com/kelseyhightower/confd/releases/download/v0.10.0/confd-0.10.0-linux-amd64 /usr/bin/confd
 RUN chmod +x /usr/bin/confd
