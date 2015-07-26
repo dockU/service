@@ -1,10 +1,12 @@
 FROM dock0/service
 MAINTAINER Jon Chen <bsd@voltaire.sh>
 
+VOLUME ["/opt/service/"]
+
 ENV ETCD_NODE etcd-master.a.serv.pw
-ENV ETCD_CA_KEY /etc/ssl/certs/etcd-ca.a.serv.pw.ca
-ENV ETCD_CERT /etc/ssl/certs/etcd-localhost.crt
-ENV ETCD_KEY /etc/ssl/private/etcd-localhost.key
+ENV ETCD_CA_KEY /opt/service/ssl/certs/etcd-ca.a.serv.pw.ca
+ENV ETCD_CERT /opt/service/ssl/certs/etcd-localhost.crt
+ENV ETCD_KEY /opt/service/ssl/private/etcd-localhost.key
 
 RUN pacman -Syyu --needed --noconfirm
 
