@@ -1,15 +1,17 @@
 FROM dock0/service
 MAINTAINER Jon Chen <bsd@voltaire.sh>
 
-VOLUME ["/opt/service/"]
+VOLUME ["/opt/secrets/"]
 
-ENV ETCD_NODE etcd-master.a.serv.pw
-ENV ETCD_CA_KEY /opt/service/ssl/certs/etcd-ca.a.serv.pw.ca
-ENV ETCD_CERT /opt/service/ssl/certs/etcd-localhost.crt
-ENV ETCD_KEY /opt/service/ssl/private/etcd-localhost.key
+ENV ETCD_NODE coreos.aws.nerdrage.biz
+ENV ETCD_CA_KEY /opt/secrets/tls/nerdrage.crt
+ENV ETCD_CERT /opt/secrets/tls/coreos.aws.nerdrage.biz
+ENV ETCD_KEY /opt/secrets/tls/coreos.aws.nerdrage.biz
 
 RUN mkdir -p /etc/confd/{conf.d,templates}
-RUN mkdir -p /opt/service/ssl/{certs,private}
+RUN mkdir -p /opt/secrets/tls
+
+# install confd
 ADD https://github.com/kelseyhightower/confd/releases/download/v0.10.0/confd-0.10.0-linux-amd64 /usr/bin/confd
 RUN chmod +x /usr/bin/confd
 
